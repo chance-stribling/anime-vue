@@ -1,16 +1,10 @@
 <script setup>
-import AddToList from './components/AddToList.vue';
-import HeaderDiv from './components/HeaderDiv.vue';
+import { RouterView } from 'vue-router'
+
 </script>
 
 <template>
-  <header>
-    <HeaderDiv/>
-    <AddToList/>
-  </header>
-
-  <main>
-  </main>
+      <RouterView />
 </template>
 
 <style scoped>

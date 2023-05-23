@@ -5,7 +5,7 @@
             <div class="title">
                 <h1>Snackr Trackr</h1>
                 <div class="buttons">
-                    <v-btn @click="document.getElementById('#addToList').scrollIntoView()" class="mt-10 mx-5" variant="outlined">Havin' a Snack</v-btn>
+                    <v-btn @click="$router.push('add')" class="mt-10 mx-5" variant="outlined">Havin' a Snack</v-btn>
                     <v-btn class="mt-10 mx-5" variant="outlined">Snack Log</v-btn>
                 </div>
             </div>
