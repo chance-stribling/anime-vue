@@ -2,7 +2,14 @@
     <div class="main">
         <div class="square1">
             <!-- This is where the real app starts -->
-            
+            <div class="title">
+                <h1>Snackr Trackr</h1>
+                <div class="buttons">
+                    <v-btn @click="document.getElementById('#addToList').scrollIntoView()" class="mt-10 mx-5" variant="outlined">Havin' a Snack</v-btn>
+                    <v-btn class="mt-10 mx-5" variant="outlined">Snack Log</v-btn>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -15,11 +22,18 @@
     margin: 0 auto;
     justify-content: center;
 }
-    .square1{
-        height: 0px;
-        width: 5px;
-        background-color: black;
-    }
+.square1{
+    height: 0px;
+    width: 5px;
+    background-color: black;
+    text-align: center;
+}
+.title{
+    color: white;
+    margin-top: 50vh; 
+    margin-bottom: 50vh;
+}
+
 </style>
 
 <script>
@@ -41,23 +55,23 @@ export default{
                 height: '100vh',
                 easing: 'easeInOutQuad',
                 loop: false,
-                duration: 2000,
+                duration: 200,
             }),
             anime({
                 targets: '.square1',
                 width: '100vw',
                 easing: 'easeInOutQuad',
                 loop: false,
-                duration: 2000,
-                delay: 2000,
+                duration: 200,
+                delay: 200,
             }),
             anime({
                 targets: '.title',
                 easing: 'easeInOutQuad',
                 loop: false,
                 opacity:['0%', '100%'],
-                duration: 500,
-                delay: 4000,
+                duration: 50,
+                delay: 400,
             })
         }
     }
