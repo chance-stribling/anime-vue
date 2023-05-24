@@ -3,11 +3,8 @@
         <div class="square1">
             <!-- This is where the real app starts -->
             <div class="title">
-                <h1>Snackr Trackr</h1>
-                <div class="buttons">
-                    <v-btn @click="document.getElementById('#addToList').scrollIntoView()" class="mt-10 mx-5" variant="outlined">Havin' a Snack</v-btn>
-                    <v-btn class="mt-10 mx-5" variant="outlined">Snack Log</v-btn>
-                </div>
+                <h1>Chance Stribling</h1>
+                <h3>Web Developer</h3>
             </div>
 
         </div>
@@ -30,6 +27,7 @@
 }
 .title{
     color: white;
+    font-size: 25px;
     margin-top: 50vh; 
     margin-bottom: 50vh;
 }
@@ -55,24 +53,40 @@ export default{
                 height: '100vh',
                 easing: 'easeInOutQuad',
                 loop: false,
-                duration: 200,
+                duration: 2000,
             }),
             anime({
                 targets: '.square1',
                 width: '100vw',
                 easing: 'easeInOutQuad',
                 loop: false,
-                duration: 200,
-                delay: 200,
+                duration: 2000,
+                delay: 2000,
+            }),
+            anime({
+                targets: '.square1',
+                backgroundColor: '#7a9460',
+                loop: false,
+                easing: 'easeInOutQuad',
+                direction: 'alternate',
+                duration: 1000,
+                delay: 4000
             }),
             anime({
                 targets: '.title',
                 easing: 'easeInOutQuad',
                 loop: false,
                 opacity:['0%', '100%'],
-                duration: 50,
-                delay: 400,
-            })
+                duration: 500,
+                delay: 3000,
+            }),
+            anime({
+                targets: '.title',
+                rotate: 360,
+                duration:1000,
+                delay: 4200,
+                loop: false
+            });
         }
     }
 }

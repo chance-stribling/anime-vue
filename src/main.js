@@ -11,11 +11,10 @@ import * as directives from 'vuetify/directives'
 
 const vuetify = createVuetify({
   components,
-  directives,
+  directives
 })
 
 // Anime
-import anime from 'animejs/lib/anime.es.js';
-
+import anime from 'animejs/lib/anime.es.js'
 
 createApp(App).use(vuetify).use(anime).mount('#app')
