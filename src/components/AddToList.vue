@@ -9,4 +9,8 @@
   width: 100vw;
   background-color: #f2e090;
 }
+.main h1{
+    color: black;
+    text-align: center;
+}
 </style>

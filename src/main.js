@@ -1,4 +1,5 @@
 import './assets/main.css'
+import router from './router'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -17,4 +18,4 @@ const vuetify = createVuetify({
 // Anime
 import anime from 'animejs/lib/anime.es.js'
 
-createApp(App).use(vuetify).use(anime).mount('#app')
+createApp(App).use(router).use(vuetify).use(anime).mount('#app')
