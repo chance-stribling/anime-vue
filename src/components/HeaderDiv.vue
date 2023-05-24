@@ -5,6 +5,15 @@
             <div class="title">
                 <h1>Chance Stribling</h1>
                 <h3>Web Developer</h3>
+                <v-row class="mt-15 pa-0 justify-space-evenly">
+                    <v-btn width="130">Experience</v-btn>
+                    <v-btn width="130">Work History</v-btn>
+                </v-row>
+                <v-row class="mt-15 pa-0 justify-space-evenly">
+                        
+                    <v-btn width="130">Skills</v-btn>
+                    <v-btn width="130">Projects</v-btn>
+                </v-row>
             </div>
 
         </div>
@@ -28,8 +37,10 @@
 .title{
     color: white;
     font-size: 25px;
-    margin-top: 50vh; 
-    margin-bottom: 50vh;
+    margin: 40vh;
+    width: fit-content + 10px;
+
+
 }
 
 </style>
@@ -47,6 +58,8 @@ export default{
         this.go();
     },
     methods:{
+
+
         go: function(){
             anime({
                 targets: '.square1',
@@ -78,7 +91,7 @@ export default{
                 loop: false,
                 opacity:['0%', '100%'],
                 duration: 500,
-                delay: 3000,
+                delay: 5000,
             }),
             anime({
                 targets: '.title',
@@ -86,7 +99,16 @@ export default{
                 duration:1000,
                 delay: 4200,
                 loop: false
+            }),
+            anime({
+                targets: '.title h1, h3',
+                easing: 'linear',
+                scale: 1.2,
+                direction: 'alternate',
+                duration:1000,
+                loop: true
             });
+
         }
     }
 }
