@@ -1,21 +1,25 @@
 <template>
     <div class="main">
+        <div class="bg-animation">
+            <div class="skew"></div>
+            <div class="skew2"></div>
+            <div class="skew3"></div>
+        </div>
         <div class="square1">
-            <!-- This is where the real app starts -->
             <div class="title">
-                <h1>Chance Stribling</h1>
-                <h3>Web Developer</h3>
+                <h1 class=" font-weight-black">Chance Stribling</h1>
+                <h3 class="font-weight-black">Web Developer</h3>
                 <div class="nav-menu" :style="[row ? {'display': 'flex', 'flex-direction':'column', 'align-items': 'center', 'row-gap': '20px'}:{'display': 'flex', 'justify-content':'space-around'}]">
                     
-                        <v-btn variant="outlined" @click="shrink()" class="nav-button" >Experience</v-btn>
-                        <v-btn variant="outlined"  class="nav-button">Skills</v-btn>
-                        <v-btn variant="outlined"  class="nav-button">Projects</v-btn>
+                        <v-btn variant="elevated" color='white' size="x-large" @click="shrink()" class="nav-button" >Experience</v-btn>
+                        <v-btn variant="elevated" color='white'  size="x-large"  class="nav-button">Skills</v-btn>
+                        <v-btn variant="elevated" color='white'  size="x-large"  class="nav-button">Projects</v-btn>
                 </div>
             </div>
 
         </div>
         <div class="square2">
-            <h1 class="mt-15 ">EXPERIENCE</h1>
+            <h1 class="mt-15 font-weight-black">EXPERIENCE</h1>
             <v-card class="job-list">
                 <template v-slot:title>
                     Web Developer Intern
@@ -46,7 +50,7 @@
                     <div v-show="show">
                         <v-divider></v-divider>
                         
-                        <v-card-text style="line-height: 2.5; text-align: left;">
+                        <v-card-text style="line-height: 2.5; font-size:medium; text-align: left;">
                             <div class="font-weight-medium desc" >
                                 Working in an Agile Software Development lifecycle.<br/>
                             </div>
@@ -86,6 +90,37 @@
 </template>
 
 <style scoped>
+.skew{
+    transform:translateY(250px) skewY(-20deg);
+    height: 80px;
+    width: 100%;
+    background-color: #c94d4d;
+    position: absolute;
+
+ 
+}
+.skew2{
+    transform:translateY(350px) skewY(-20deg);
+    height: 80px;
+    width: 100%;
+    background-color: #d8832b;
+    position: absolute;
+
+ 
+}
+.skew3{
+    transform:translateY(450px) skewY(-20deg);
+    height: 80px;
+    width: 100%;
+    background-color: #dab71f;
+    position: absolute;
+
+}
+.bg-animation{
+    position: absolute;
+    padding: 0;
+    text-align: center;
+}
 .desc:hover{
     scale: 1.01;
     color: #adff2f;
@@ -94,7 +129,7 @@
     margin-top: 50px;
 }
 .nav-button{
-    width: 130px;
+    width: 140px;
 }
 .job-list{
     min-height: 100px;
@@ -130,8 +165,11 @@
     color: white;
     font-size: 25px;
     margin: 40vh 0;
-
-
+}
+.title h1,h3{
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 </style>
@@ -140,6 +178,7 @@
 import anime from 'animejs/lib/anime.es';
 
 export default{
+ 
     data(){
         return{
             show: false,
@@ -153,16 +192,17 @@ export default{
         shrink: function(){
             this.row++;
             anime({
-                targets: ['.square1'],
+                targets: ['.square1', '.bg-animation', '.skew', '.skew2', '.skew3'],
                 width: '25vw',
                 easing: 'easeInOutQuad',
                 loop: false,
                 duration: 2000,
             }),
+
             anime({
                 targets: '.title h1',
                 easing: 'linear',
-                fontSize:'20px',
+                fontSize:'30px',
                 direction: 'alternate',
                 duration:1000,
                 loop: false
@@ -188,8 +228,9 @@ export default{
         },
 
         go: function(){
+           
             anime({
-                targets: '.square1',
+                targets: ['.square1', '.bg-animation', '.skew', '.skew2', '.skew3'],
                 width: '100vw',
                 easing: 'easeInOutQuad',
                 loop: false,
@@ -204,9 +245,8 @@ export default{
                 duration: 2000,
                 delay: 2000,
             }),
-           
             anime({
-                targets: '.title',
+                targets: ['.title', '.bg-animation'],
                 easing: 'easeInOutQuad',
                 loop: false,
                 opacity:['0%', '100%'],

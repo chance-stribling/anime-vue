@@ -16,6 +16,5 @@ const vuetify = createVuetify({
 })
 
 // Anime
-import anime from 'animejs/lib/anime.es.js'
 
-createApp(App).use(router).use(vuetify).use(anime).mount('#app')
+createApp(App).use(router).use(vuetify).mount('#app')
