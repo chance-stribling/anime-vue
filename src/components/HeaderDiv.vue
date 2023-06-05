@@ -5,21 +5,77 @@
             <div class="title">
                 <h1>Chance Stribling</h1>
                 <h3>Web Developer</h3>
-                <v-row class="mt-15 mx-0 pa-0 justify-space-evenly">
-                    <v-btn variant="outlined" @click="shrink()" min-width="130" >Experience</v-btn>
-                    <v-btn variant="outlined"  min-width="130">Work History</v-btn>
-                </v-row>
-                <v-row class="mt-15 pa-0 justify-space-evenly">
-                        
-                    <v-btn variant="outlined"  min-width="130">Skills</v-btn>
-                    <v-btn variant="outlined"  min-width="130">Projects</v-btn>
-                </v-row>
+                <div class="nav-menu" :style="[row ? {'display': 'flex', 'flex-direction':'column', 'align-items': 'center', 'row-gap': '20px'}:{'display': 'flex', 'justify-content':'space-around'}]">
+                    
+                        <v-btn variant="outlined" @click="shrink()" class="nav-button" >Experience</v-btn>
+                        <v-btn variant="outlined"  class="nav-button">Skills</v-btn>
+                        <v-btn variant="outlined"  class="nav-button">Projects</v-btn>
+                </div>
             </div>
 
         </div>
         <div class="square2">
             <h1 class="mt-15 ">EXPERIENCE</h1>
-            <v-card title="Web Developer Intern" class="job-list"></v-card>
+            <v-card class="job-list">
+                <template v-slot:title>
+                    Web Developer Intern
+                </template>
+
+                <template v-slot:subtitle>
+                    Business Infomation Systems
+                </template>
+
+                <v-card-actions class="justify-end">
+                    <v-btn
+                        color="#adff2f"
+                        variant="text"
+                        @click="show = !show"
+
+                    >
+                        Details
+                    </v-btn>
+
+
+                    <v-btn
+                        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                        @click="show = !show"
+                    ></v-btn>
+                    </v-card-actions>
+
+                    <v-expand-transition>
+                    <div v-show="show">
+                        <v-divider></v-divider>
+                        
+                        <v-card-text style="line-height: 2.5; text-align: left;">
+                            <div class="font-weight-medium desc" >
+                                Working in an Agile Software Development lifecycle.<br/>
+                            </div>
+                            <div class="font-weight-medium desc" >
+                                Analyzing user requirements, envisioning system features, and working with a team to bring them to life. <br/>
+                            </div>
+                            <div class="font-weight-medium desc" >
+                                Designing User Interfaces and Backend Systems, including Database Design and Interfacing with 3rd Party systems.<br/>
+                            </div>
+                            <div class="font-weight-medium desc" >
+                                Completing software development activities by coordinating requirements, schedules, and activities.<br/>
+                            </div>
+                            <div class="font-weight-medium desc" >
+                                Contributing to team meetings and troubleshooting development and production problems.<br/>
+                            </div>
+                            <div class="font-weight-medium desc" >
+                                Supporting users and in-house teams by developing documentation and assistance tools.<br/>
+                            </div>
+                            <div class="font-weight-medium desc" >
+                                Continually improving job knowledge by researching applicable technologies and software products.<br/>
+                            </div>
+                            <div class="font-weight-medium desc" >
+                                Enhancing organization reputation by accepting ownership for accomplishing new and different requests.<br/>
+                            </div>
+
+                        </v-card-text>
+                    </div>
+                    </v-expand-transition>
+            </v-card>
             <v-card title="QC Analyst"  class="job-list"></v-card>
             <v-card title="Software Developer Intern"  class="job-list"></v-card>
             <v-card title="Network Technician"  class="job-list"></v-card>
@@ -30,10 +86,19 @@
 </template>
 
 <style scoped>
-
+.desc:hover{
+    scale: 1.01;
+    color: #adff2f;
+}
+.nav-menu{
+    margin-top: 50px;
+}
+.nav-button{
+    width: 130px;
+}
 .job-list{
-    height: 200px;
-    width: 60vw;
+    min-height: 100px;
+    width: 70vw;
     margin: 15px auto;
     background-color: black;
     color: white;
@@ -57,9 +122,9 @@
     max-height: 100vh;
     overflow-x: hidden;
 
-    background-color: #c94d4d;
+    background-color: white;
     text-align: center;
-    color: white;
+    color: black;
 }
 .title{
     color: white;
@@ -77,7 +142,8 @@ import anime from 'animejs/lib/anime.es';
 export default{
     data(){
         return{
-            show: false
+            show: false,
+            row: 0
         }
     },
     mounted(){
@@ -85,9 +151,10 @@ export default{
     },
     methods:{
         shrink: function(){
+            this.row++;
             anime({
                 targets: ['.square1'],
-                width: '30vw',
+                width: '25vw',
                 easing: 'easeInOutQuad',
                 loop: false,
                 duration: 2000,
@@ -114,7 +181,7 @@ export default{
                 position:'relateive',
                 opacity: 100,
                 height: '100%',
-                width: '70vw',
+                width: '75vw',
                 duration:100,
                 loop: false
             });
