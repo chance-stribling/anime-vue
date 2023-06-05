@@ -6,7 +6,7 @@
                 <h1>Chance Stribling</h1>
                 <h3>Web Developer</h3>
                 <v-row class="mt-15 mx-0 pa-0 justify-space-evenly">
-                    <v-btn variant="outlined" @click="shrink()" min-width="130" class="pause">Experience</v-btn>
+                    <v-btn variant="outlined" @click="shrink()" min-width="130" >Experience</v-btn>
                     <v-btn variant="outlined"  min-width="130">Work History</v-btn>
                 </v-row>
                 <v-row class="mt-15 pa-0 justify-space-evenly">
@@ -19,33 +19,44 @@
         </div>
         <div class="square2">
             <h1 class="mt-15 ">EXPERIENCE</h1>
-            <v-card title="Web Developer Intern" height="200px" width="60vw" class="mx-auto mt-15" color="black"></v-card>
-            <v-card title="QC Analyst" height="200px" width="60vw" class="mx-auto mt-15" color="black"></v-card>
-            <v-card title="Software Developer Intern" height="200px" width="60vw" class="mx-auto mt-15" color="black"></v-card>
-            <v-card title="Network Technician" height="200px" width="60vw" class="mx-auto mt-15" color="black"></v-card>
-            <v-card title="Repair Technician" height="200px" width="60vw" class="mx-auto mt-15" color="black"></v-card>
-            <v-card title="QA Tester" height="200px" width="60vw" class="mx-auto mt-15" color="black"></v-card>
+            <v-card title="Web Developer Intern" class="job-list"></v-card>
+            <v-card title="QC Analyst"  class="job-list"></v-card>
+            <v-card title="Software Developer Intern"  class="job-list"></v-card>
+            <v-card title="Network Technician"  class="job-list"></v-card>
+            <v-card title="Repair Technician"  class="job-list"></v-card>
+            <v-card title="QA Tester" class="job-list"></v-card>
         </div>
     </div>
 </template>
 
 <style scoped>
+
+.job-list{
+    height: 200px;
+    width: 60vw;
+    margin: 15px auto;
+    background-color: black;
+    color: white;
+}
 .main{
-    min-height: 100vh; 
     display: flex; 
     flex-direction: row; 
     margin: 0 auto;
+
 }
 .square1{
-    height: 5px;
-    width: 5px;
     background-color: black;
     text-align: center;
     align-self: center;
+    overflow: hidden;
+
 }
 .square2{
-    height: 100vh;
+    opacity: 0;
     width: 0;
+    max-height: 100vh;
+    overflow-x: hidden;
+
     background-color: #c94d4d;
     text-align: center;
     color: white;
@@ -62,7 +73,6 @@
 
 <script>
 import anime from 'animejs/lib/anime.es';
-import { VHover } from 'vuetify/lib/components/index.mjs';
 
 export default{
     data(){
@@ -83,9 +93,17 @@ export default{
                 duration: 2000,
             }),
             anime({
-                targets: '.title h1, h3',
+                targets: '.title h1',
                 easing: 'linear',
-                scale: 0.5,
+                fontSize:'20px',
+                direction: 'alternate',
+                duration:1000,
+                loop: false
+            }),
+            anime({
+                targets: '.title h3',
+                easing: 'linear',
+                fontSize:'16px',
                 direction: 'alternate',
                 duration:1000,
                 loop: false
@@ -93,9 +111,11 @@ export default{
             anime({
                 targets: '.square2',
                 easing: 'linear',
-                height: '100vh',
+                position:'relateive',
+                opacity: 100,
+                height: '100%',
                 width: '70vw',
-                duration:1000,
+                duration:100,
                 loop: false
             });
         },
@@ -110,7 +130,8 @@ export default{
             }),
             anime({
                 targets: '.square1',
-                height: '100vh',
+                height: ['1px','100vh'],
+                overflow: 'hidden',
                 easing: 'easeInOutQuad',
                 loop: false,
                 duration: 2000,
@@ -131,7 +152,7 @@ export default{
                 scale: 1.2,
                 direction: 'alternate',
                 duration:1000,
-                loop: false
+                loop: true
             });
 
         }
