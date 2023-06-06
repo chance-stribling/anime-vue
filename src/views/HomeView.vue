@@ -2,5 +2,5 @@
 import HeaderDiv from '../components/HeaderDiv.vue'
 </script>
 <template>
-  <HeaderDiv/>
+  <HeaderDiv />
 </template>
