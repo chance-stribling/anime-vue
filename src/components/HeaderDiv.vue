@@ -6,7 +6,7 @@
       <div class="skew3"></div>
     </div>
     <div class="square1">
-        <v-btn v-show="row>0" @click="grow()" icon="mdi-chevron-left" variant="plain" size="small" color="white" class="home" style="margin-left: 200px;"></v-btn>
+        <v-btn v-show="row>0" id="home" @click="grow()" icon="mdi-chevron-left" variant="plain" size="small" color="white" class="home" style="margin-left: 200px;"></v-btn>
         <div class="title">
         <h1 class="font-weight-black">Chance Stribling</h1>
         <h3 class="font-weight-black">Web Developer</h3>
@@ -24,6 +24,7 @@
           ]"
         >
           <v-btn
+            id="exp"
             variant="elevated"
             color="white"
             size="large"
@@ -31,8 +32,8 @@
             class="nav-button"
             >Experience</v-btn
           >
-          <v-btn variant="elevated" @click="shrink2()" color="white" size="large" class="nav-button">Skills</v-btn>
-          <v-btn variant="elevated" color="white" size="large" class="nav-button">Projects</v-btn>
+          <v-btn id="skills" variant="elevated" @click="shrink2()" color="white" size="large" class="nav-button">Skills</v-btn>
+          <v-btn id="projects" variant="elevated" color="white" size="large" class="nav-button">Projects</v-btn>
         </div>
       </div>
     </div>
@@ -120,7 +121,7 @@
 .title {
   color: white;
   font-size: 25px;
-  margin: 40vh 0;
+  margin: 50vh 0;
 }
 .title h1,
 h3 {
@@ -150,7 +151,7 @@ export default {
   },
   methods: {
     shrink: function () {
-      this.row++
+      this.row++;
       anime({
         targets: ['.square1', '.bg-animation', '.skew', '.skew2', '.skew3'],
         width: '25vw',
@@ -162,14 +163,17 @@ export default {
           targets: '.title h1',
           easing: 'linear',
           fontSize: '30px',
+          translateY:-50,
           direction: 'alternate',
           duration: 1000,
           loop: false
         }),
         anime({
-          targets: '.title h3',
+          targets: ['.title h3', '#skills', '#projects','#exp'],
           easing: 'linear',
           fontSize: '16px',
+          translateY:-50,
+
           direction: 'alternate',
           duration: 1000,
           loop: false
@@ -177,24 +181,23 @@ export default {
         anime({
           targets: '.square2',
           easing: 'linear',
-          position: 'relative',
           opacity: 100,
           height: '100%',
           width: '75vw',
-          duration: 1000,
+          duration: 500,
           loop: false
         }),
       anime({
         targets: ['.square3'],
         width: 0,
-        opacity:0,
         easing: 'easeInOutQuad',
         loop: false,
         duration: 2000
-      })
+      });
+        
     },
     shrink2: function () {
-      this.row++
+      this.row++;
       anime({
         targets: ['.square1', '.bg-animation', '.skew', '.skew2', '.skew3'],
         width: '25vw',
@@ -221,20 +224,21 @@ export default {
         anime({
           targets: '.square3',
           easing: 'linear',
-          position: 'relative',
           opacity: 100,
           height: '100%',
           width: '75vw',
-          duration: 100,
+          duration: 500,
           loop: false
         }),
       anime({
-        targets: ['.square2'],
-        width: '0',
+        targets: '.square2',
+        width: 0,
         easing: 'easeInOutQuad',
         loop: false,
         duration: 2000
-      })
+      });
+
+
         
     },
     grow: function () {
@@ -285,7 +289,7 @@ export default {
           scale: 1.2,
           direction: 'alternate',
           duration: 1000,
-          loop: true
+          loop: false
         })
     }
   }
